@@ -342,10 +342,7 @@ iptables -A INPUT -p icmp --icmp-type echo-request -j DROP
 
 ## Testing
 Fairy ke HIA (bisa ping)
-<img width="1500" alt="dokumentasi" src="">
-<img width="1500" alt="dokumentasi" src="">
-<img width="1500" alt="dokumentasi" src="">
-<img width="1500" alt="dokumentasi" src="">
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/d6d52bbf-8572-461c-ac8c-82b9166574d0">
 
 HIA ke Fairy (Tidak bisa ping)
 <img width="1500" alt="dokumentasi" src="">
