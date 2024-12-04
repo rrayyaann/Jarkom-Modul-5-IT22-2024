@@ -31,6 +31,9 @@ Kelompok kami memiliki prefix IP `192.244`
 <img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/7aa82a2e-a04e-44ba-98d4-2bba21d96e53">
 <img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/628521fb-9106-41ef-bdbb-8c509f2596a3">
 <img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/090fb2d8-0740-4c36-bffc-bb60e1ebce00">
+![image](https://github.com/user-attachments/assets/b76469fc-f620-4073-ba8c-1f368ae951ae)
+![image](https://github.com/user-attachments/assets/6f163bfc-bc9d-466d-b97e-ab72c64ea12e)
+![image](https://github.com/user-attachments/assets/958dfea4-3623-4457-8f16-06bfcad6968b)
 
 
 </details>
