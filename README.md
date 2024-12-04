@@ -55,277 +55,310 @@ https://docs.google.com/spreadsheets/d/1MhaMOiWueZfxZUgOedcuPsIKiQ-S026za_WP8uIF
 ## PEMBAGIAN IP
 <img width="1500" alt="topo-gns" src="https://github.com/user-attachments/assets/12323a71-b037-4c56-b152-bd3033ff4998">
 
-## NewEridu
+## Konfigurasi Network
+### NewEridu
 ```jsx
 auto eth0
 iface eth0 inet dhcp
 
+#A1
 auto eth1
 iface eth1 inet static
   address 192.244.0.1
   netmask 255.255.255.252
   
+#A2
 auto eth2
 iface eth2 inet static
   address 192.244.0.5
   netmask 255.255.255.252
+```
 
+### ScootOutpost
+```jsx
 #A6
-post-up route add -net 192.244.2.0 netmask 255.255.255.248 gw 192.244.0.2
-
-#A3
-post-up route add -net 192.244.0.8 netmask 255.255.255.248 gw 192.244.06
-
-#A8
-post-up route add -net 192.244.2.64 netmask 255.255.255.192 gw 192.244.0.2
-
-#A7
-post-up route add -net 192.244.2.8 netmask 255.255.255.248 gw 192.244.0.2
-
-#A4
-post-up route add -net 192.244.0.128 netmask 255.255.255.128 gw 192.244.0.6
-
-#A5
-post-up route add -net 192.244.1.0 netmask 255.255.255.0 gw 192.244.0.6
-
-#A9
-post-up route add -net 192.244.2.128 netmask 255.255.255.252 gw 192.244.0.2
-```
-
-## SixStreet (DHCP Relay)
-```jsx
-auto eth0
-iface eth0 inet static
-  address 192.244.0.2
-  netmask 255.255.255.252
-  gateway 192.244.0.1
-
-auto eth1
-iface eth1 inet static
-  address 192.244.2.1
-  netmask 255.255.255.248
-
-auto eth2
-iface eth2 inet static
-  address 192.244.2.9
-  netmask 255.255.255.248
-
-up echo nameserver 192.168.122.1 > /etc/resolv.conf
-
-#A8
-post-up route add -net 192.244.2.64 netmask 255.255.255.192 gw 192.244.2.3
-
-#A9
-post-up route add -net 192.244.2.128 netmask 255.255.255.252 gw 192.244.2.2
-
-#A4
-post-up route add -net 192.244.0.128 netmask 255.255.255.128 gw 192.244.0.1
-```
-## HDD (DNS)
-```jsx
-auto eth0
-iface eth0 inet static
-  address 192.244.2.10
-  netmask 255.255.255.248
-  gateway 192.244.2.9
-
-up echo nameserver 192.168.122.1 > /etc/resolv.conf
-```
-
-## Fairy (DHCP)
-```jsx
-auto eth0
-iface eth0 inet static
-  address 192.244.2.11
-  netmask 255.255.255.248
-  gateway 192.244.2.9
-
-up echo nameserver 192.168.122.1 > /etc/resolv.conf
-
-#A8
-post-up route add -net 192.244.2.16 netmask 255.255.255.192 gw 192.244.2.9
-
-#A4
-post-up route add -net 192.244.0.128 netmask 255.255.255.128 gw 192.244.2.9
-```
-
-## OuterRing (DHCP Relay)
-```jsx
-auto eth0
-iface eth0 inet static
-  address 192.244.2.3
-  netmask 255.255.255.248
-  gateway 192.244.2.1
-
-auto eth1
-iface eth1 inet static
-  address 192.244.2.65
-  netmask 255.255.255.192
-
-up echo nameserver 192.168.122.1 > /etc/resolv.conf
-
-#A9
-post-up route add -net 192.244.2.128 netmask 255.255.255.252 gw 192.244.2.2
-
-#A1
-post-up route add -net 192.244.0.0 netmask 255.255.255.252 gw 192.244.2.1
-
-#A7
-post-up route add -net 192.244.2.8 netmask 255.255.255.248 gw 192.244.2.1
-```
-
-## Burnice (Client)
-```jsx
-auto eth0
-iface eth0 inet dhcp
-
-#Hollowzero
-post-up route add -net 192.244.2.128 netmask 255.255.255.252 gw 192.244.2.65
-
-#A1
-post-up route add -net 192.244.0.0 netmask 255.255.255.252 gw 192.244.2.65
-```
-
-## Caesar (Client)
-```jsx
-auto eth0
-iface eth0 inet dhcp
-
-#Hollowzero
-post-up route add -net 192.244.2.128 netmask 255.255.255.252 gw 192.244.2.65
-
-#A1
-post-up route add -net 192.244.0.0 netmask 255.255.255.252 gw 192.244.2.65
-```
-
-## LuminaSquare (DCHP Relay)
-```jsx
-auto eth0
-iface eth0 inet static
-  address 192.244.0.6
-  netmask 255.255.255.252
-  gateway 192.244.0.5
-
-auto eth1
-iface eth1 inet static
-  address 192.244.0.9
-  netmask 255.255.255.248
- 
-auto eth2
-iface eth2 inet static
-  address 192.244.1.1
-  netmask 255.255.255.0
-
-up echo nameserver 192.168.122.1 > /etc/resolv.conf
-
-#A1
-post-up route add -net 192.244.0.0 netmask 255.255.255.252 gw 192.244.0.5
-
-#A4
-post-up route add -net 192.244.0.128 netmask 255.255.255.128 gw 192.244.0.11
-
-#A7
-post-up route add -net 192.244.2.8 netmask 255.255.255.248 gw 192.244.0.5
-```
-
-## Jane (Client)
-```jsx
-auto eth0
-iface eth0 inet dhcp
-```
-
-## Policeboo (Client)
-```jsx
-auto eth0
-iface eth0 inet dhcp
-```
-
-## HIA (Web Server)
-```jsx
-auto eth0
-iface eth0 inet static
-  address 192.244.0.10
-  netmask 255.255.255.248
-  gateway 192.244.0.9
- 
-up echo nameserver 192.168.122.1 > /etc/resolv.conf
-```
-
-## HollowZero (Web Server)
-```jsx
-auto eth0
-iface eth0 inet static
-  address 192.244.2.130
-  netmask 255.255.255.252
-  gateway 192.244.2.129
-
-up echo nameserver 192.168.122.1 > /etc/resolv.conf
-
-#A1
-post-up route add -net 192.244.0.0 netmask 255.255.255.252 gw 192.244.2.129
-```
-
-## BalletTwins (DHCP Relay)
-```jsx
-auto eth0
-iface eth0 inet static
-  address 192.244.0.11
-  netmask 255.255.255.248
-  gateway 192.244.0.9
- 
-auto eth1
-iface eth1 inet static
-  address 192.244.0.129
-  netmask 255.255.255.128
-
-up echo nameserver 192.168.122.1 > /etc/resolv.conf
- 
-#A2
-post-up route add -net 192.244.0.4 netmask 255.255.255.252 gw 192.244.0.9
-
-#A1
-post-up route add -net 192.244.0.0 netmask 255.255.255.252 gw 192.244.0.9
-
-#A7
-post-up  route add -net 192.244.2.8 netmask 255.255.255.248 gw 192.244.0.9
-```
-
-## Ellen (Client)
-```jsx
-auto eth0
-iface eth0 inet dhcp 
-```
-
-## Lycaon (Client)
-```jsx
-auto eth0
-iface eth0 inet dhcp 
-```
-
-## ScootOutpost
-```jsx
 auto eth0
 iface eth0 inet static
   address 192.244.2.2
   netmask 255.255.255.248
   gateway 192.244.2.1
 
+#A9
 auto eth1
 iface eth1 inet static
   address 192.244.2.129
   netmask 255.255.255.252
+```
 
-up echo nameserver 192.168.122.1 > /etc/resolv.conf
+### SixStreet
+```jsx
+#A1
+auto eth0
+iface eth0 inet static
+  address 192.244.0.2
+  netmask 255.255.255.252
+  gateway 192.244.0.1
 
-#A2
-post-up route add -net 192.244.0.4 netmask 255.255.255.252 gw 192.244.2.1
+#A6
+auto eth1
+iface eth1 inet static
+  address 192.244.2.1
+  netmask 255.255.255.248
+
+#A7
+auto eth2
+iface eth2 inet static
+  address 192.244.2.9
+  netmask 255.255.255.248
+```
+
+### OuterRing
+```jsx
+#A6
+auto eth0
+iface eth0 inet static
+  address 192.244.2.3
+  netmask 255.255.255.248
+  gateway 192.244.2.1
 
 #A8
-post-up route add -net 192.244.2.16 netmask 255.255.255.192 gw 192.244.2.3
-
-#A1
-post-up  route add -net 192.244.0.0 netmask 255.255.255.252 gw 192.244.2.1
+auto eth1
+iface eth1 inet static
+  address 192.244.2.65
+  netmask 255.255.255.192
 ```
+
+### HDD (DNS)
+```jsx
+#A7
+auto eth0
+iface eth0 inet static
+  address 192.244.2.10
+  netmask 255.255.255.248
+  gateway 192.244.2.9
+```
+
+### HollowZero
+```jsx
+#A9
+auto eth0
+iface eth0 inet static
+  address 192.244.2.130
+  netmask 255.255.255.252
+  gateway 192.244.2.129
+```
+
+### Caesar (Client)
+```jsx
+auto eth0
+iface eth0 inet dhcp
+```
+
+### Burnice (Client)
+```jsx
+auto eth0
+iface eth0 inet dhcp
+```
+
+### Fairy (DHCP)
+```jsx
+#A7
+auto eth0
+iface eth0 inet static
+  address 192.244.2.11
+  netmask 255.255.255.248
+  gateway 192.244.2.9
+```
+
+### LuminaSquare
+```jsx
+#A2
+auto eth0
+iface eth0 inet static
+  address 192.244.0.6
+  netmask 255.255.255.252
+  gateway 192.244.0.5
+
+#A3
+auto eth1
+iface eth1 inet static
+  address 192.244.0.9
+  netmask 255.255.255.248
+
+#A5
+auto eth2
+iface eth2 inet static
+  address 192.244.1.1
+  netmask 255.255.255.0
+```
+
+### BalletTwins
+```jsx
+#A3
+auto eth0
+iface eth0 inet static
+  address 192.244.0.11
+  netmask 255.255.255.248
+  gateway 192.244.0.9
+
+#A4
+auto eth1
+iface eth1 inet static
+  address 192.244.0.129
+  netmask 255.255.255.128
+```
+
+### HIA
+```jsx
+#A3
+auto eth0
+iface eth0 inet static
+  address 192.244.0.10
+  netmask 255.255.255.248
+  gateway 192.244.0.9
+```
+
+### Lycaon(Client)
+```jsx
+auto eth0
+iface eth0 inet dhcp
+```
+
+### Ellen(Client)
+```jsx
+auto eth0
+iface eth0 inet dhcp
+```
+
+### Policeboo (Client)
+```jsx
+auto eth0
+iface eth0 inet dhcp
+```
+
+### Jane (Client)
+```jsx
+auto eth0
+iface eth0 inet dhcp
+```
+
+
+## Routing
+### NewEridu
+```jsx
+#KIRI
+post-up route add -net 192.244.2.8 netmask 255.255.255.248 gw 192.244.0.2 #A7
+post-up route add -net 192.244.2.0 netmask 255.255.255.248 gw 192.244.0.2 #A6
+post-up route add -net 192.244.2.128 netmask 255.255.255.252 gw 192.244.0.2 #A9
+post-up route add -net 192.244.2.64 netmask 255.255.255.192 gw 192.244.0.2 #A8
+
+#KANAN
+post-up route add -net 192.244.0.8 netmask 255.255.255.248 gw 192.244.0.6 #A3
+post-up route add -net 192.244.1.0 netmask 255.255.255.0 gw 192.244.0.6 #A5
+post-up route add -net 192.244.0.128 netmask 255.255.255.128 gw 192.244.0.6 #A4
+```
+
+### ScootOutpost
+```jsx
+post-up route add -net 192.244.0.0 netmask 255.255.255.252 gw 192.244.2.1 #A1
+```
+
+### SixStreet
+```jsx
+up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
+post-up route add -net 192.244.2.128 netmask 255.255.255.252 gw 192.244.2.2 #A9
+
+post-up route add -net 192.244.2.64 netmask 255.255.255.192 gw 192.244.2.3 #A8
+```
+
+### OuterRing
+```jsx
+up echo nameserver 192.168.122.1 > /etc/resolv.conf
+```
+
+### HDD (DNS)
+```jsx
+up echo nameserver 192.168.122.1 > /etc/resolv.conf
+```
+
+### HollowZero
+```jsx
+post-up route add -net 192.244.0.0 netmask 255.255.255.252 gw 192.244.2.129 #A1
+
+up echo nameserver 192.168.122.1 > /etc/resolv.conf
+```
+
+### Fairy (DHCP)
+```jsx
+up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
+post-up route add -net 192.244.2.64 netmask 255.255.255.192 gw 192.244.2.9 #A8
+post-up route add -net 192.244.1.0 netmask 255.255.255.0 gw 192.244.2.9 #A5
+post-up route add -net 192.244.0.128 netmask 255.255.255.128 gw 192.244.2.9 #A4
+```
+
+### LuminaSquare
+```jsx
+up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
+post-up route add -net 192.244.0.128 netmask 255.255.255.128 gw 192.244.0.11 #A4
+```
+
+### BalletTwins
+```jsx
+post-up route add -net 192.244.2.8 netmask 255.255.255.248 gw 192.244.0.9 #A7
+
+up echo nameserver 192.168.122.1 > /etc/resolv.conf
+```
+
+### HIA
+```jsx
+post-up route add -net 192.244.0.4 netmask 255.255.255.252 gw 192.244.0.9 #A2
+
+up echo nameserver 192.168.122.1 > /etc/resolv.conf
+```
+
+## Misi 2 No 2
+> perangkat lain tidak bisa mengakses fairy, sedangkan fairy bisa mengakses semua perangkat.
+
+lakukan command di Fairy
+```jsx
+iptables -A INPUT -p icmp --icmp-type echo-request -j DROP
+```
+
+## Testing
+Fairy ke HIC (bisa ping)
+![alt text](images/image2.png)
+
+HIC ke Fairy (Tidak bisa ping)
+![alt text](images/image3.png)
+
+
+## Misi 2 No 3
+> Hanya Fairy yang dapat mengakses HDD, dan gunakan nc (netcat) untuk memastikan akses
+
+Jalankan semuanya (dhcpnya), kemudian di HDD command
+```
+iptables -L INPUT -n --line-numbers
+```
+*untuk melihat mengecek dan memetakan aturan firewall yang mengatur siapa yang boleh masuk ke sistem*
+
+kemudian, blok semua akses perangkat lain dengan command
+```
+iptables -P INPUT DROP
+```
+
+untuk memberikan izin Fairy mengakses HDD (DNS) lakukan command
+```
+iptables -A INPUT -s 192.244.2.11 -j ACCEPT
+```
+untuk Drop semua akses lakukan command
+```
+iptables -D INPUT 1
+```
+
+
 
 ## Settingan Config
 <details>
