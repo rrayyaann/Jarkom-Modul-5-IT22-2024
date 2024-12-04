@@ -9,6 +9,26 @@
 ## Prefix IP 
 Kelompok kami memiliki prefix IP `192.244`
 
+<details>
+
+<summary>Dokumentasi</summary>
+
+## VLSM Topologi @ GNS3 
+<img width="1500" alt="topo-gns" src="https://github.com/user-attachments/assets/dccfb792-bbad-43f7-93da-28b869dc8503">
+
+![image](https://github.com/user-attachments/assets/c8e2602e-7ad1-4ac1-baca-3f79b207408b)
+![image](https://github.com/user-attachments/assets/f3c5cde9-f02e-40e5-a118-07e30b2face9)
+![image](https://github.com/user-attachments/assets/f79031a0-21c4-4230-8ac0-8d1daa47a59a)
+![image](https://github.com/user-attachments/assets/d6d52bbf-8572-461c-ac8c-82b9166574d0)
+![image](https://github.com/user-attachments/assets/9ed2c127-abff-4d47-b189-05aaed744da2)
+![image](https://github.com/user-attachments/assets/8d00b3fc-4d62-4a77-bc28-36750bf826d7)
+![image](https://github.com/user-attachments/assets/cb1bfa64-2553-4406-be5d-0f478825044a)
+![image](https://github.com/user-attachments/assets/3b449f47-5e10-4092-b53c-ac39ccc951ae)
+
+
+
+</details>
+
 # Spreadsheet
 https://docs.google.com/spreadsheets/d/1MhaMOiWueZfxZUgOedcuPsIKiQ-S026za_WP8uIFIH4/edit?usp=sharing
 
