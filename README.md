@@ -52,8 +52,15 @@ https://docs.google.com/spreadsheets/d/1MhaMOiWueZfxZUgOedcuPsIKiQ-S026za_WP8uIF
 
 </details>
 
+## RUTE
+<img width="1500" alt="rute" src="https://github.com/user-attachments/assets/4cb0cad2-7f94-4cc6-877d-a7e112fb80b4">
+
 ## PEMBAGIAN IP
-<img width="1500" alt="topo-gns" src="https://github.com/user-attachments/assets/12323a71-b037-4c56-b152-bd3033ff4998">
+<img width="1500" alt="pembagian ip" src="https://github.com/user-attachments/assets/12323a71-b037-4c56-b152-bd3033ff4998">
+
+## TREE
+<img width="1500" alt="tree" src="https://github.com/user-attachments/assets/37485d5f-0b1c-4d59-af89-4a4dd693cce4">
+
 
 ## Konfigurasi Network
 ### NewEridu
