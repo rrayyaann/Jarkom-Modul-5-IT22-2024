@@ -14,7 +14,7 @@ Kelompok kami memiliki prefix IP `192.244`
 <summary>Dokumentasi</summary>
 
 ## Dokumentasi Testing
-
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/4c209241-8f34-427e-a0a6-ec8a06424a2f">
 <img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/c8e2602e-7ad1-4ac1-baca-3f79b207408b">
 <img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/f3c5cde9-f02e-40e5-a118-07e30b2face9">
 <img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/f79031a0-21c4-4230-8ac0-8d1daa47a59a">
@@ -24,13 +24,13 @@ Kelompok kami memiliki prefix IP `192.244`
 <img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/cb1bfa64-2553-4406-be5d-0f478825044a">
 <img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/3b449f47-5e10-4092-b53c-ac39ccc951ae">
 
-![image](https://github.com/user-attachments/assets/24b067f9-0385-48ed-a092-8b9ab6b6259c)
-![image](https://github.com/user-attachments/assets/d1f3a853-9676-466d-aba8-13ad84c1387d)
-![image](https://github.com/user-attachments/assets/c3b1c063-a00d-4211-9cc9-d329366250eb)
-![image](https://github.com/user-attachments/assets/21e10e94-eab3-4071-b753-e645a5279f06)
-![image](https://github.com/user-attachments/assets/7aa82a2e-a04e-44ba-98d4-2bba21d96e53)
-![image](https://github.com/user-attachments/assets/628521fb-9106-41ef-bdbb-8c509f2596a3)
-![image](https://github.com/user-attachments/assets/090fb2d8-0740-4c36-bffc-bb60e1ebce00)
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/24b067f9-0385-48ed-a092-8b9ab6b6259c">
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/d1f3a853-9676-466d-aba8-13ad84c1387d">
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/c3b1c063-a00d-4211-9cc9-d329366250eb">
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/21e10e94-eab3-4071-b753-e645a5279f06">
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/7aa82a2e-a04e-44ba-98d4-2bba21d96e53">
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/628521fb-9106-41ef-bdbb-8c509f2596a3">
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/090fb2d8-0740-4c36-bffc-bb60e1ebce00">
 
 
 </details>
