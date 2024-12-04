@@ -377,6 +377,227 @@ untuk Drop semua akses lakukan command
 iptables -D INPUT 1
 ```
 
+dari Fairy ke HDD (bisa ping)
+![alt text](images/image9.png)
+
+dari Lumina ke HDD (tidak bisa ping)
+![alt text](images/image-1.png)
+
+untuk testing dengan netcat, pastikan membuka port yang akan digunakan di HDD
+*jangan lupa untuk restart HDD dan install netcat dulu `apt-get update` dan `apt-get install netcat`* kemudian lakukan blok kayak diatas dan testing netcat dengan command di HDD:
+```
+nc -l -p 3030
+```
+![alt text](images/image-2.png)
+
+testing pada fairy dengan command
+```
+echo "pesan" |nc 192.244.2.10 3030
+```
+![alt text](images/image-3.png)
+
+lalu balik lagi ke  HDD <br>
+**Berhasil*
+![alt text](images/image-4.png)
+
+testing Pada LuminaSquare dengan cara buka port pada HDD disini saya menggunakan port 3030
+```
+nc -l -p 3030
+```
+![alt text](images/image-6.png)
+
+kemudian pada Lumina command:
+```
+echo "pesan" |nc 192.244.2.10 3030
+```
+![alt text](images/image7.png)
+
+
+lalu balik lagi ke HDD <br>
+**tidak terkirim apa - apa*
+
+![alt text](images/image-8.png)
+
+## Misi 2 No 4
+> Hollow hanya boleh diakses pada hari Senin hingga Jumat dan hanya oleh faksi SoC (Burnice & Caesar) dan PubSec(Jane & Policeboo). karena hari ini hari sabtu, mereka harus menunggu hingga hari senin. Gunakan curl untuk memastikan akses ini.
+
+Masuk ke Web console HollowZero dan run setup.sh
+![alt text](images/image-25.png)
+
+cek untuk mencoba webservernya
+![alt text](images/image-26.png)
+
+command untuk drop semua akses
+```
+iptables -P INPUT DROP
+```
+
+command untuk mengizinkan A8 dan A5 mengakses Hollow
+```
+iptables -A INPUT -s 192.244.2.64/26 -m time --weekdays Mon,Tue,Wed,Thu,Fri -j ACCEPT
+iptables -A INPUT -s 192.244.1.0/24 -m time --weekdays Mon,Tue,Wed,Thu,Fri -j ACCEPT
+```
+
+Testing jika **SoC (Burnice & Caisar)** di Accept pada Mon,Tue,Wed,Thu,Fri sedangkan `date` sekarang adalah sun dengan command
+```
+iptables -A INPUT -s 192.244.2.64/26 -m time --weekdays Mon,Tue,Wed,Thu,Fri -j ACCEPT
+```
+
+![alt text](images/images.png) 
+
+**tidak accept hari ini (sun)*
+![alt text](images/images-1.png)
+
+maka, SoC (Burnice & Caesar) tidak dapat mengakses
+![alt text](images/images-2.png)
+![alt text](images/images-3.png)
+
+
+Testing Jika **SoC (Burnice & Caisar)** di Accept pada Mon,Tue,Wed,Thu,Fri,Sun (Hari ini) dengan command
+```
+iptables -A INPUT -s 192.244.2.64/26 -m time --weekdays Mon,Tue,Wed,Thu,Fri,Sun -j ACCEPT
+```
+![alt text](images/images-4.png)
+
+maka, SoC (Burnice & Caesar) dapat mengakses
+![alt text](images/images-5.png)
+![alt text](images/images-6.png)
+
+Sedangkan, PubSec (Jane & Policeboo) tidak dapat mengakses
+![alt text](images/images-7.png)
+![alt text](images/images-8.png)
+
+Testing jika **PubSec (Jane & Policeboo)** di Accept pada Mon,Tue,Wed,Thu,Fri sedangkan `date` sekarang adalah sun dengan command
+```
+iptables -P INPUT DROP
+```
+```
+iptables -A INPUT -s 192.244.1.0/24 -m time --weekdays Mon,Tue,Wed,Thu,Fri -j ACCEPT
+```
+![alt text](images/images-10.png)
+
+maka, PubSec (Jane & Policeboo) tidak dapat mengakses
+
+![alt text](images/image-11.png)
+![alt text](images/image-12.png)
+
+Testing Jika **PubSec (Jane & Policeboo)** di Accept pada Mon,Tue,Wed,Thu,Fri,Sun (Hari ini) dengan command
+```
+iptables -A INPUT -s 192.244.1.0/24 -m time --weekdays Mon,Tue,Wed,Thu,Fri,Sun -j ACCEPT
+```
+![alt text](images/image-13.png)
+
+maka, PubSec (Jane & Policeboo) dapat mengakses
+![alt text](images/image-14.png)
+![alt text](images/image-15.png)
+
+Sedangkan, SoC (Burnice & Caisar) tidak dapat mengakses
+![alt text](images/image-16.png)
+![alt text](images/image-17.png)
+
+Testing Jika **PubSec (Jane & Policeboo)** dan **SoC (Burnice & Caisar)** di Accept pada Mon,Tue,Wed,Thu,Fri (Sedangkan hari ini Sun) dengan command
+```
+iptables -P INPUT DROP
+```
+```
+iptables -A INPUT -s 192.244.2.64/26 -m time --weekdays Mon,Tue,Wed,Thu,Fri -j ACCEPT
+iptables -A INPUT -s 192.244.1.0/24 -m time --weekdays Mon,Tue,Wed,Thu,Fri -j ACCEPT
+```
+![alt text](images/image-18.png)
+
+maka, PubSec (Jane & Policeboo) dan SoC (Burnice & Caisar) tidak dapat mengakses
+![alt text](images/image-19.png)
+![alt text](images/image-20.png)
+
+Testing Jika **PubSec (Jane & Policeboo)** dan **SoC (Burnice & Caisar)** di Accept pada Mon,Tue,Wed,Thu,Fri,Sun (hari ini Sun) dengan command
+```
+iptables -A INPUT -s 192.244.2.64/26 -m time --weekdays Mon,Tue,Wed,Thu,Fri,Sun -j ACCEPT
+iptables -A INPUT -s 192.244.1.0/24 -m time --weekdays Mon,Tue,Wed,Thu,Fri,Sun -j ACCEPT
+```
+
+maka, PubSec (Jane & Policeboo) dan SoC (Burnice & Caisar) dapat mengakses
+![alt text](images/image-23.png)
+![alt text](images/image-24.png)
+![alt text](images/image-21.png)
+![alt text](images/image-22.png)
+
+## Misi 2 No 5
+> HIA hanya dierbolehkan untuk 
+a. Ellen dan Lycaon pada jam 08.00-21.00
+b. Jane dan Policeboo pada jam 03.00-23.00.
+Gunakan Curl untuk memastikan akses ini
+
+Masuk ke Web console HIA dan run setup.sh
+![alt text](images/image-27.png)
+
+cek untuk mencoba webservernya
+![alt text](images/image-28.png)
+
+jalankan iptables 
+```
+iptables -P INPUT DROP
+```
+```
+iptables -A INPUT -s 192.244.0.128/25 -m time --timestart 08:00 --timestop 21:00 -j ACCEPT 
+iptables -A INPUT -s 192.244.1.0/24 -m time --timestart 03:00 --timestop 23:00 -j ACCEPT
+```
+
+Waktu sekarang (saat saya testing)
+![alt text](images/image-29.png)
+
+Testing Jika **Lycaon dan Ellen** di Accept pada 08:00 --timestop 21:00 (jam saat ini, 19.00-an) dengan command
+```
+iptables -P INPUT DROP
+```
+```
+iptables -A INPUT -s 192.244.0.128/25 -m time --timestart 08:00 --timestop 21:00 -j ACCEPT 
+```
+
+maka, Lycaon dan Ellen bisa mengakses, dikarenakan masih dalam range jamnya
+![alt text](images/image-30.png)
+![alt text](images/image-31.png)
+
+sedangkan, Jane dan Policeboo tidak dapat mengakses karena akses masih untuk Lycaon dan Ellen
+![alt text](images/image-32.png)
+![alt text](images/image-33.png)
+
+
+
+Testing Jika **Jane & Policeboo** di Accept pada 08:00 --timestop 21:00 (jam saat ini, 19.00-an) dengan command
+```
+iptables -A INPUT -s 192.244.1.0/24 -m time --timestart 03:00 --timestop 23:00 -j ACCEPT
+```
+![alt text](images/image-34.png)
+
+jangan lupa untuk drop iptables Lycaon dan Ellen terlebih dahulu untuk memastikan testing akses hanya untuk Jane & Policeboo
+```
+iptables -D INPUT 1
+```
+
+maka, Jane & Policeboo bisa mengakses, dikarenakan masih dalam range jamnya
+![alt text](images/image-35.png)
+![alt text](images/image-36.png)
+
+sedangkan, Lycaon dan Ellen tidak dapat mengakses karena akses masih untuk Jane & Policeboo
+![alt text](images/image-37.png)
+![alt text](images/image-38.png)
+
+Testing Jika **Jane & Policeboo** dengan syarat di soal Accept pada 03:00 --timestop 23:00 dan  **Lycaon dan Ellen** dengan syarat di soal Accept pada 08:00 --timestop 21:00 (jam saat ini, 19.00-an)
+```
+iptables -A INPUT -s 192.244.0.128/25 -m time --timestart 08:00 --timestop 21:00 -j ACCEPT 
+iptables -A INPUT -s 192.244.1.0/24 -m time --timestart 03:00 --timestop 23:00 -j ACCEPT
+```
+![alt text](images/image-39.png)
+
+
+maka, Jane & Policeboo, Lycaon dan Ellen bisa mengakses, dikarenakan masih dalam jam sekarang masih dalam range jam mereka
+
+![alt text](images/image-40.png)
+![alt text](images/image-41.png)
+![alt text](images/image-42.png)
+![alt text](images/image-43.png)
+
+
 
 
 ## Settingan Config
