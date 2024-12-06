@@ -47,7 +47,7 @@ https://docs.google.com/spreadsheets/d/1MhaMOiWueZfxZUgOedcuPsIKiQ-S026za_WP8uIF
 <summary>Gambar Topologi GNS-VLSM</summary>
 
 ## VLSM Topologi @ GNS3 
-<img width="1500" alt="topo-gns" src="https://github.com/user-attachments/assets/cb3c49ac-3a69-401f-8846-749bf5981555">
+<img width="1500" alt="topo-gns" src="https://github.com/user-attachments/assets/3dec0577-b9c7-4ced-a20e-5dc52cfe475e">
 
 </details>
 
@@ -334,6 +334,9 @@ post-up route add -net 192.244.0.4 netmask 255.255.255.252 gw 192.244.0.9 #A2
 
 up echo nameserver 192.168.122.1 > /etc/resolv.conf
 ```
+## Misi 2 No 1
+> New Eridu bisa terhubung ke internet, perlu konfigurasi routing dengan iptables namun tidak diperbolehkan menggunakan MASQUERADE
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/4c209241-8f34-427e-a0a6-ec8a06424a2f">
 
 ## Misi 2 No 2
 > perangkat lain tidak bisa mengakses fairy, sedangkan fairy bisa mengakses semua perangkat.
@@ -345,10 +348,10 @@ iptables -A INPUT -p icmp --icmp-type echo-request -j DROP
 
 ## Testing
 Fairy ke HIA (bisa ping)
-<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/d6d52bbf-8572-461c-ac8c-82b9166574d0">
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/c8e2602e-7ad1-4ac1-baca-3f79b207408b">
 
 HIA ke Fairy (Tidak bisa ping)
-<img width="1500" alt="dokumentasi" src="">
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/0345238e-966b-45f4-972a-665ff7474ebc">
 <img width="1500" alt="dokumentasi" src="">
 <img width="1500" alt="dokumentasi" src="">
 <img width="1500" alt="dokumentasi" src="">
@@ -378,54 +381,36 @@ iptables -D INPUT 1
 ```
 
 dari Fairy ke HDD (bisa ping)
-![alt text](images/image9.png)
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/d6d52bbf-8572-461c-ac8c-82b9166574d0">
 
 dari Lumina ke HDD (tidak bisa ping)
-![alt text](images/image-1.png)
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/9ed2c127-abff-4d47-b189-05aaed744da2">
 
 untuk testing dengan netcat, pastikan membuka port yang akan digunakan di HDD
 *jangan lupa untuk restart HDD dan install netcat dulu `apt-get update` dan `apt-get install netcat`* kemudian lakukan blok kayak diatas dan testing netcat dengan command di HDD:
 ```
 nc -l -p 3030
 ```
-![alt text](images/image-2.png)
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/24b067f9-0385-48ed-a092-8b9ab6b6259c">
 
 testing pada fairy dengan command
 ```
 echo "pesan" |nc 192.244.2.10 3030
 ```
-![alt text](images/image-3.png)
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/d1f3a853-9676-466d-aba8-13ad84c1387d">
 
 lalu balik lagi ke  HDD <br>
 **Berhasil*
-![alt text](images/image-4.png)
-
-testing Pada LuminaSquare dengan cara buka port pada HDD disini saya menggunakan port 3030
-```
-nc -l -p 3030
-```
-![alt text](images/image-6.png)
-
-kemudian pada Lumina command:
-```
-echo "pesan" |nc 192.244.2.10 3030
-```
-![alt text](images/image7.png)
-
-
-lalu balik lagi ke HDD <br>
-**tidak terkirim apa - apa*
-
-![alt text](images/image-8.png)
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/c3b1c063-a00d-4211-9cc9-d329366250eb">
 
 ## Misi 2 No 4
 > Hollow hanya boleh diakses pada hari Senin hingga Jumat dan hanya oleh faksi SoC (Burnice & Caesar) dan PubSec(Jane & Policeboo). karena hari ini hari sabtu, mereka harus menunggu hingga hari senin. Gunakan curl untuk memastikan akses ini.
 
 Masuk ke Web console HollowZero dan run setup.sh
-![alt text](images/image-25.png)
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/21e10e94-eab3-4071-b753-e645a5279f06">
 
 cek untuk mencoba webservernya
-![alt text](images/image-26.png)
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/7aa82a2e-a04e-44ba-98d4-2bba21d96e53">
 
 command untuk drop semua akses
 ```
@@ -443,10 +428,10 @@ Testing jika **SoC (Burnice & Caisar)** di Accept pada Mon,Tue,Wed,Thu,Fri sedan
 iptables -A INPUT -s 192.244.2.64/26 -m time --weekdays Mon,Tue,Wed,Thu,Fri -j ACCEPT
 ```
 
-![alt text](images/images.png) 
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/090fb2d8-0740-4c36-bffc-bb60e1ebce00">
 
 **tidak accept hari ini (sun)*
-![alt text](images/images-1.png)
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/628521fb-9106-41ef-bdbb-8c509f2596a3">
 
 maka, SoC (Burnice & Caesar) tidak dapat mengakses
 ![alt text](images/images-2.png)
