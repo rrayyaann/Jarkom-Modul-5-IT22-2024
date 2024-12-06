@@ -1,4 +1,4 @@
-# Jarkom-Modul-5-IT22-2024
+# Lapres Pratikum Jarkom-Modul-5-IT22-2024
 
 **KELOMPOK IT22**
 | Nama | NRP |
