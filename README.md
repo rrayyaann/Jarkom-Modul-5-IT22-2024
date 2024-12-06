@@ -31,9 +31,9 @@ Kelompok kami memiliki prefix IP `192.244`
 <img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/7aa82a2e-a04e-44ba-98d4-2bba21d96e53">
 <img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/628521fb-9106-41ef-bdbb-8c509f2596a3">
 <img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/090fb2d8-0740-4c36-bffc-bb60e1ebce00">
-![image](https://github.com/user-attachments/assets/b76469fc-f620-4073-ba8c-1f368ae951ae)
-![image](https://github.com/user-attachments/assets/6f163bfc-bc9d-466d-b97e-ab72c64ea12e)
-![image](https://github.com/user-attachments/assets/958dfea4-3623-4457-8f16-06bfcad6968b)
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/b76469fc-f620-4073-ba8c-1f368ae951ae">
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/6f163bfc-bc9d-466d-b97e-ab72c64ea12e">
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/958dfea4-3623-4457-8f16-06bfcad6968b">
 
 
 </details>
@@ -423,88 +423,20 @@ iptables -A INPUT -s 192.244.2.64/26 -m time --weekdays Mon,Tue,Wed,Thu,Fri -j A
 iptables -A INPUT -s 192.244.1.0/24 -m time --weekdays Mon,Tue,Wed,Thu,Fri -j ACCEPT
 ```
 
-Testing jika **SoC (Burnice & Caisar)** di Accept pada Mon,Tue,Wed,Thu,Fri sedangkan `date` sekarang adalah sun dengan command
+Testing jika **SoC (Burnice & Caisar)** di Accept pada Mon,Tue,Wed,Thu,Fri sedangkan `date` sekarang adalah wed dengan command
 ```
 iptables -A INPUT -s 192.244.2.64/26 -m time --weekdays Mon,Tue,Wed,Thu,Fri -j ACCEPT
 ```
-
-<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/090fb2d8-0740-4c36-bffc-bb60e1ebce00">
-
-**tidak accept hari ini (sun)*
 <img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/628521fb-9106-41ef-bdbb-8c509f2596a3">
 
-maka, SoC (Burnice & Caesar) tidak dapat mengakses
-![alt text](images/images-2.png)
-![alt text](images/images-3.png)
-
-
-Testing Jika **SoC (Burnice & Caisar)** di Accept pada Mon,Tue,Wed,Thu,Fri,Sun (Hari ini) dengan command
-```
-iptables -A INPUT -s 192.244.2.64/26 -m time --weekdays Mon,Tue,Wed,Thu,Fri,Sun -j ACCEPT
-```
-![alt text](images/images-4.png)
+**Date hari ini (wed)*
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/090fb2d8-0740-4c36-bffc-bb60e1ebce00">
 
 maka, SoC (Burnice & Caesar) dapat mengakses
-![alt text](images/images-5.png)
-![alt text](images/images-6.png)
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/b76469fc-f620-4073-ba8c-1f368ae951ae">
 
 Sedangkan, PubSec (Jane & Policeboo) tidak dapat mengakses
-![alt text](images/images-7.png)
-![alt text](images/images-8.png)
-
-Testing jika **PubSec (Jane & Policeboo)** di Accept pada Mon,Tue,Wed,Thu,Fri sedangkan `date` sekarang adalah sun dengan command
-```
-iptables -P INPUT DROP
-```
-```
-iptables -A INPUT -s 192.244.1.0/24 -m time --weekdays Mon,Tue,Wed,Thu,Fri -j ACCEPT
-```
-![alt text](images/images-10.png)
-
-maka, PubSec (Jane & Policeboo) tidak dapat mengakses
-
-![alt text](images/image-11.png)
-![alt text](images/image-12.png)
-
-Testing Jika **PubSec (Jane & Policeboo)** di Accept pada Mon,Tue,Wed,Thu,Fri,Sun (Hari ini) dengan command
-```
-iptables -A INPUT -s 192.244.1.0/24 -m time --weekdays Mon,Tue,Wed,Thu,Fri,Sun -j ACCEPT
-```
-![alt text](images/image-13.png)
-
-maka, PubSec (Jane & Policeboo) dapat mengakses
-![alt text](images/image-14.png)
-![alt text](images/image-15.png)
-
-Sedangkan, SoC (Burnice & Caisar) tidak dapat mengakses
-![alt text](images/image-16.png)
-![alt text](images/image-17.png)
-
-Testing Jika **PubSec (Jane & Policeboo)** dan **SoC (Burnice & Caisar)** di Accept pada Mon,Tue,Wed,Thu,Fri (Sedangkan hari ini Sun) dengan command
-```
-iptables -P INPUT DROP
-```
-```
-iptables -A INPUT -s 192.244.2.64/26 -m time --weekdays Mon,Tue,Wed,Thu,Fri -j ACCEPT
-iptables -A INPUT -s 192.244.1.0/24 -m time --weekdays Mon,Tue,Wed,Thu,Fri -j ACCEPT
-```
-![alt text](images/image-18.png)
-
-maka, PubSec (Jane & Policeboo) dan SoC (Burnice & Caisar) tidak dapat mengakses
-![alt text](images/image-19.png)
-![alt text](images/image-20.png)
-
-Testing Jika **PubSec (Jane & Policeboo)** dan **SoC (Burnice & Caisar)** di Accept pada Mon,Tue,Wed,Thu,Fri,Sun (hari ini Sun) dengan command
-```
-iptables -A INPUT -s 192.244.2.64/26 -m time --weekdays Mon,Tue,Wed,Thu,Fri,Sun -j ACCEPT
-iptables -A INPUT -s 192.244.1.0/24 -m time --weekdays Mon,Tue,Wed,Thu,Fri,Sun -j ACCEPT
-```
-
-maka, PubSec (Jane & Policeboo) dan SoC (Burnice & Caisar) dapat mengakses
-![alt text](images/image-23.png)
-![alt text](images/image-24.png)
-![alt text](images/image-21.png)
-![alt text](images/image-22.png)
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/6f163bfc-bc9d-466d-b97e-ab72c64ea12e">
 
 ## Misi 2 No 5
 > HIA hanya dierbolehkan untuk 
@@ -545,8 +477,6 @@ maka, Lycaon dan Ellen bisa mengakses, dikarenakan masih dalam range jamnya
 sedangkan, Jane dan Policeboo tidak dapat mengakses karena akses masih untuk Lycaon dan Ellen
 ![alt text](images/image-32.png)
 ![alt text](images/image-33.png)
-
-
 
 Testing Jika **Jane & Policeboo** di Accept pada 08:00 --timestop 21:00 (jam saat ini, 19.00-an) dengan command
 ```
