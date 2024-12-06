@@ -522,25 +522,18 @@ iptables -I PORTSCAN 1 -j LOG --log-prefix "PORT SCAN DETECTED: " --log-level 4 
 #iptables -A OUTPUT -m recent --name blacklist --rcheck -j DROP
 ```
 
-policeboo ping
-![alt text](images/image-44.png)
-
-policeboo curl
-![alt text](images/image-45.png)
-
-jane ping dan curl sebelum nmap
-![alt text](images/image-46.png)
+policeboo ping & curl
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/35d76587-d84a-4b36-bdd1-e12d448aebe2">
 
 kemudian, kita policeboo Nmap ke HIA
 ```
 nmap -p 1-100 192.244.0.10
 ```
-![alt text](images/image-47.png)
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/7dcdc81d-5cbb-4322-bf55-a0288977c64b">
 
 setelah itu kita coba ping dan curl policeboo
 **tidak bisa*
-![alt text](images/image-48.png)
-![alt text](images/image-49.png)
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/acbb7b3e-0117-4319-b9a0-ded1db104028">
 
 sedangkan, Jane tetap bisa ping dan curl karena dia tidak menyerang
 
@@ -568,7 +561,7 @@ kemudian, testing di client antara Caesar, Burnice, Jane atau Policeboo. disini 
 ```
 parallel curl -s http://IP-HollowZero ::: IP-Caesar IP-Burnice IP-Jane IP-Policeboo
 ```
-![alt text](images/image-58.png)
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/9b17e58c-1073-4ca5-a80a-ae8e85ac571d">
 
 ### Misi 2 No 8
 > setiap paket yang dikirim Fairy ke Burnnice ternyata dialihkan ke HollowZero. Gunakan nc untuk memastikan alur pengalihan ini
@@ -579,7 +572,7 @@ iptables -t nat -A PREROUTING -p tcp --dport 3030 -j DNAT --to-destination 192.2
 
 iptables -t nat -A POSTROUTING -p tcp --dport 3030 -j MASQUERADE
 ```
-![alt text](images/image-51.png)
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/d1d1759d-56e9-4cbd-8ed6-eeab641af516">
 
 ### Testing
 command di Hollow Zero
@@ -587,17 +580,16 @@ command di Hollow Zero
 ```
 nc -l -p 3030
 ```
-![alt text](images/image-52.png)
-
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/7ddf275e-112d-4565-bd80-fceeb151c80b">
 
 dari fairy netcat ke burnice
 ```
 echo "burnice apa holow" | nc [IP burnice] 3030
 ```
-![alt text](images/image-53.png)
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/f38a4f2d-0654-43a0-addd-bb555e8d3fa2">
 
 kemudian ke Hollow lagi untuk liat hasilnya
-![alt text](images/image-54.png)
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/1cb5bb2a-5ee6-4d4c-add7-287b3c8d29c4">
 
 ### Misi 3
 > memblokir semua transmisi masuk maupun keluar dari Burnice bisa memanipulasi policy iptables. Sebelum Burnice sepenuhnya terisolasi, Fairy mengirimkan pesan moral: “Kepercayaan adalah dasar dari jaringan yang aman. Jangan pernah mengkhianatinya.
@@ -616,10 +608,10 @@ di fairy kirim pesan
 ```
 echo "Kepercayaan adalah dasar dari jaringan yang aman. Jangan pernah mengkhianatinya" | nc [ip burnice] 3030
 ```
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/4621f216-c06a-4bcb-9833-dcefad680cb1">
 
 kembali ke burnice untuk melihat hasilnya
-
-![alt text](images/image-55.png)
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/271e3d25-0613-42e9-92de-1f7b0b5bd54a">
 
 kemudian, jalankan command berikut di burnice
 ```
@@ -627,229 +619,12 @@ iptables -P INPUT DROP
 iptables -P OUTPUT DROP
 iptables -P FORWARD DROP
 ```
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/c90a12ec-c5cb-49d6-aa41-6e258ca41bd6">
 
-perangkat lain tdak bisa ping burnis
+perangkat lain tdak bisa ping burnice
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/526ca2b5-0452-4798-9ec0-8cb3fd3d31df">
 
-![alt text](images/image-56.png)
+burnice tidak bisa ping keluar
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/8aa9aa39-4581-432e-a914-297ae1ccdffa">
 
-burnis tidak bisa ping keluar
-
-![alt text](images/image-57.png)
-
-
-
-
-## Settingan Config
-<details>
-
-<summary>Detail Configure</summary>
-
-# TUTORIAL
-## PREREQUESITE
-
-1. UDAH SUBNET DAN SUDAH ROUTING DAN UDAH BISA PING KE SEMUA NODES BARU LANJUT CONFIG 
-2. Setup nameserver 192.168.122.1nya, masuk web console NewEridu trus run setup.sh
-![alt text](images/image-10.png)
-
-jangan lupa buat setiap nodes harus ada nameserver kyk dibawah ini
-![alt text](images/image-11.png)
-
-4. coba ping x.com dari NewEridu,SixStreet, OuterRing, Fairy
-![alt text](images/image-12.png)
-![alt text](images/image-14.png)
-![alt text](images/image-13.png)
-## CONFIG DHCP
-Disini tutorial buat config DHCP 
-
-1. Jangan lupa buat ganti IP di `isc-dhcp-relay` ini pake IP dari DHCP Server (Fairy)
-untuk `isc-dhcp-relay` itu sama semua untuk OuterRing, SixStreet, LuminaSquare, BalletTwins
-![alt text](images/image-77.png)
-1. Copy config dari folder devices buat NewEridu, SixStreet, OuterRing, Fairy
-2. Masuk ke web console Fairy trus run setup.sh
-![alt text](images/image-2.png)
-
-3. Masuk web console SixStreet trus run setup.sh trus biar pasti, run `service isc-dhcp-relay restart`
-![alt text](images/image-3.png)
-
-
-4. Masuk web console OuterRing trus run setup.sh trus biar pasti, run `service isc-dhcp-relay restart`
-![alt text](images/image-4.png)
-![alt text](images/image-15.png)
-
-
-6. Coba masuk web console Fairy trus coba
-`service isc-dhcp-server restart`
-![alt text](images/image-6.png)
-7. Coba restart clientnya, di stop trus start lagi misal si Caesar trus masuk web consolenya
-![alt text](images/image-8.png)
-trus coba liat juga di web console Fairy
-`tail -f /var/log/syslog`
-![alt text](images/image-9.png)
-disini keliatan ada log ip 192.244.2.69 berhasil di lease ke Caesar
-8. Kalo kyk gini udah bener berarti DHCPnya
-buat DHCP client yang lain juga sama, relaynya direstart dulu, trus clientnya juga direstart (stop trus start) nanti bakal ada log lease sama kyk di caesar
-
-## NO 2 FAIRY
-1. web console Fairy trus cat setup.sh
-copy yang command iptables paling bawah
-![alt text](images/image-16.png)
-
-2. cek iptables dulu (blom ada apa2)
-![alt text](images/image-24.png)
-
-
-3. run command ini
-`iptables -A INPUT -p icmp --icmp-type echo-request -j DROP`
-nanti dia bakal muncul di iptables
-![alt text](images/image-78.png)
-
- 4. fairy bisa ping ScootOutpost (192.244.2.129)
-  ![alt text](images/image-22.png)
-
-  tapi ScootOutpost gabisa ping fairy (192.244.2.11)
-  ![alt text](images/image-23.png)
-
-## NO 3 HDD
-pasitiin HDD ini bisa ping ke semua nodes 
-
-1. web console HDD trus run setup.sh
-
-![alt text](images/image-25.png)
-
-2. liat command iptables dipaling bawah
-![alt text](images/image-26.png)
-
-3. cek aturan sekarang (blom ada apa2) 
-`iptables -L INPUT -n --line-numbers`
-![alt text](images/image-27.png)
-
-4. Bikin aturan untuk blok semua request 
-`iptables -P INPUT DROP`
-![alt text](images/image-28.png)
-
-5. lalu buat aturan agar hanya Fairy (192.244.2.11) yang bisa akses
-`iptables -A INPUT -s 192.244.2.11 -j ACCEPT`
-![alt text](images/image-29.png)
-
-6. 
-fairy bisa ping ke HDD
-![alt text](images/image-30.png)
-tapi nodes lain gabisa ping ke HDD
-![alt text](images/image-31.png)
-
-7. test pake netcat 
-di HDD nyalain netcat dlu baru yang lain
-`nc -l -p 12345`
-![alt text](images/image-45.png)
-![alt text](images/image-48.png)
-![alt text](images/image-46.png)
-terlihat bahwa fairy bisa ping nc tapi yang lain gabisa ping nc
-
-## NO 4 HollowZero
-1. masuk web console HollowZero trus run setup.sh
-![alt text](images/image-32.png)
-
-2. trus cek buat nyoba webservernya
-![alt text](images/image-50.png)
-
-3. cek command iptables paling bawah
-![alt text](images/image-34.png)
-
-4. `date` buat liat tanggal sekarang, trus jalanin 3 command iptables dibawah
-  ![alt text](images/image-35.png)
-
-5. Caesar ga bisa ping ke HollowZero soalnya sekarang hari sabtu 
-![alt text](images/image-36.png)
-
-6. ganti aturan agar sabtu bisa diakses
-![alt text](images/image-37.png)
-drop aturan no 2 (yang 192.244.2.64 pokoknya)
-`iptables -D INPUT 2`
-`iptables -A INPUT -s 192.244.2.64/26 -m time --weekdays Sat -j ACCEPT`
-kita allow hari sabtu
-![alt text](images/image-38.png)
-
-7. Caesar bisa ping dan curl ke HollowZero
-![alt text](images/image-49.png)
-## NO 5 HIA
-1. web console HIA trus run setup.sh
-![alt text](images/image-40.png)
-2. cek buat nyoba webservernya
-![alt text](images/image-52.png)
-3. jalanin iptables dibawah
-![alt text](images/image-42.png)
-4. 
-    a.  `iptables -P INPUT DROP`
-    b. `iptables -A INPUT -s 192.244.0.128/25 -m time --timestart 08:00 --timestop 21:00 -j ACCEPT`
-    c. `iptables -A INPUT -s 192.244.1.0/24 -m time --timestart 03:00 --timestop 23:00 -j ACCEPT`
-![alt text](images/image-43.png)
-5. Lycaon bisa akses karena sekarang masih masuk kedalam waktu yang diperbolehkan
-![alt text](images/image-51.png)
-
-## NO 6 HIA PORTSCAN
-1. masuk web console HIA trus cat setup.sh
-run iptables dari "Create a chain for handling port scanning" sampe bawah
-![alt text](images/image-53.png)
-2. cek web console policeboo trus ping sama curl ke HIA
-![alt text](images/image-54.png)
-![alt text](images/image-58.png)
-masih bisa kan, coba kita nmap ke HIA
-![alt text](images/image-55.png)
-![alt text](images/image-56.png)
-gabisa ping
-![alt text](images/image-57.png)
-curl jg gabisa
-
-## NO 7 HollowZero
-1. Masuk web console HollowZero trus cat setup.sh
-![alt text](images/image-63.png)
-run iptables yang bawah "Allow 2 active connections"
-![alt text](images/image-64.png)
-2. coba testing pake parallel di client bebas, antara Caesar, Burnice, Jane atau Policeboo
-dan jangan lupa buat install parallel dulu
-`apt update`
-`apt install parallel -y`
-![alt text](images/image-62.png)
-untuk ip disini
-`parallel curl -s IP_HOLLOWZER ::: IPCAESAR IPBURNICE IPJANE IPPOLICEBOO`
-terlihat kalo hanya 2 koneksi yang bisa akses curl
-
-## NO 8 Burnice
-
-1. didalam setup.sh ada ip, itu IP dari HollowZero
-2. masuk web console Burnice trus run setup.sh
-![alt text](images/image-65.png)
-cek juga ip dari burnice disini ipnya 192.244.2.67
-liat di bagian inet
-![alt text](images/image-67.png)
-3. di hollowzero coba listen nc port 12345
-`nc -l -p 12345`
-![alt text](images/image-66.png)
-4. di fairy kita netcat ke Burnice
-![alt text](images/image-68.png)
-5. nanti hollowzero yang akan mendapat messagenya bukan burnice
-![alt text](images/image-69.png)
-
-## MISI 3
-1. sebelum meng isolasi Burnice kita disuruh kirim message ke Burnice
-2. apt update
-3. apt install netcat -y
-4. nc -l -p 7777 
-![alt text](images/image-73.png)
-5. `iptables -F` buat clear rule iptables
-5. kirim pesan ke burnice dari fairy
-![alt text](images/image-72.png)
-5. output di burnice
- ![alt text](images/image-71.png)
-
-7. run iptables terakhir
-![alt text](images/image-74.png)
-![alt text](images/image-75.png)
-
-8. test ping
-![alt text](images/image-76.png)
-gabisa di ping
-selesai 
-
-
-</details> 
+## SELESAI - TERIMAKASIH
