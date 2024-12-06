@@ -445,10 +445,10 @@ b. Jane dan Policeboo pada jam 03.00-23.00.
 Gunakan Curl untuk memastikan akses ini
 
 Masuk ke Web console HIA dan run setup.sh
-![alt text](images/image-27.png)
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/ca85852c-4cd6-40f8-8090-9522bf5b33bf">
 
 cek untuk mencoba webservernya
-![alt text](images/image-28.png)
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/eb44337e-c013-4790-9924-f31e31d347d9">
 
 jalankan iptables 
 ```
@@ -458,9 +458,8 @@ iptables -P INPUT DROP
 iptables -A INPUT -s 192.244.0.128/25 -m time --timestart 08:00 --timestop 21:00 -j ACCEPT 
 iptables -A INPUT -s 192.244.1.0/24 -m time --timestart 03:00 --timestop 23:00 -j ACCEPT
 ```
-
 Waktu sekarang (saat saya testing)
-![alt text](images/image-29.png)
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/2c476ca3-ea67-4cb4-9782-6441cff604f1">
 
 Testing Jika **Lycaon dan Ellen** di Accept pada 08:00 --timestop 21:00 (jam saat ini, 19.00-an) dengan command
 ```
@@ -471,18 +470,16 @@ iptables -A INPUT -s 192.244.0.128/25 -m time --timestart 08:00 --timestop 21:00
 ```
 
 maka, Lycaon dan Ellen bisa mengakses, dikarenakan masih dalam range jamnya
-![alt text](images/image-30.png)
-![alt text](images/image-31.png)
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/4f97ace8-7edb-4356-8250-9fd6d5017f18">
 
 sedangkan, Jane dan Policeboo tidak dapat mengakses karena akses masih untuk Lycaon dan Ellen
-![alt text](images/image-32.png)
-![alt text](images/image-33.png)
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/6c9f43f5-bc28-4fcf-b9d5-f27718c98a08">
 
 Testing Jika **Jane & Policeboo** di Accept pada 08:00 --timestop 21:00 (jam saat ini, 19.00-an) dengan command
 ```
 iptables -A INPUT -s 192.244.1.0/24 -m time --timestart 03:00 --timestop 23:00 -j ACCEPT
 ```
-![alt text](images/image-34.png)
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/7fa2c962-f1fa-4cfb-baf5-bfd355d6c8e4">
 
 jangan lupa untuk drop iptables Lycaon dan Ellen terlebih dahulu untuk memastikan testing akses hanya untuk Jane & Policeboo
 ```
@@ -490,28 +487,10 @@ iptables -D INPUT 1
 ```
 
 maka, Jane & Policeboo bisa mengakses, dikarenakan masih dalam range jamnya
-![alt text](images/image-35.png)
-![alt text](images/image-36.png)
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/c6462c45-9c39-4043-acc4-5931c15cc6e8">
 
 sedangkan, Lycaon dan Ellen tidak dapat mengakses karena akses masih untuk Jane & Policeboo
-![alt text](images/image-37.png)
-![alt text](images/image-38.png)
-
-Testing Jika **Jane & Policeboo** dengan syarat di soal Accept pada 03:00 --timestop 23:00 dan  **Lycaon dan Ellen** dengan syarat di soal Accept pada 08:00 --timestop 21:00 (jam saat ini, 19.00-an)
-```
-iptables -A INPUT -s 192.244.0.128/25 -m time --timestart 08:00 --timestop 21:00 -j ACCEPT 
-iptables -A INPUT -s 192.244.1.0/24 -m time --timestart 03:00 --timestop 23:00 -j ACCEPT
-```
-![alt text](images/image-39.png)
-
-
-maka, Jane & Policeboo, Lycaon dan Ellen bisa mengakses, dikarenakan masih dalam jam sekarang masih dalam range jam mereka
-
-![alt text](images/image-40.png)
-![alt text](images/image-41.png)
-![alt text](images/image-42.png)
-![alt text](images/image-43.png)
-
+<img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/a0435e29-34a2-4ba9-8dbe-c583ec74353e">
 
 ## Misi 2 No 6
 > PubSec (Jane & Policeboo) diminta meperketat keamanan jaringan server HIA. Pubsec melakukan simulasi port scan menggunakan nmap pada rentang port 1-100
