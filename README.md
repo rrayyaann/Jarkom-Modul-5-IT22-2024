@@ -598,6 +598,151 @@ maka, Jane & Policeboo, Lycaon dan Ellen bisa mengakses, dikarenakan masih dalam
 ![alt text](images/image-43.png)
 
 
+## Misi 2 No 6
+> PubSec (Jane & Policeboo) diminta meperketat keamanan jaringan server HIA. Pubsec melakukan simulasi port scan menggunakan nmap pada rentang port 1-100
+a. Web server harus memblokir aktivitas scan port yang melebihi 25 port secara otomatis dalam rentang waktu 10 detik
+b. penyerang yang terblokir tidak dapat melakukan ping, nc, atau curl ke HIA
+c. Catat Log dari Iptables untuk keperluan analisis dan dokumentasikan dalam format PDF
+
+aktifkan HIA dengan `bash setup.sh`
+kemudian run IPTABLES
+**cat pada setup.sh di HIA* atau salin dibawah ini
+```
+#Create a chain for handling port scanning
+iptables -N PORTSCAN
+
+#Detect and handle new connections to ports 1-100
+iptables -I INPUT 1 -j LOG --log-prefix "PORT SCAN BRO: " --log-level 4 --log-tcp-options --log-ip-options
+
+iptables -A INPUT -p tcp --dport 1:100 -m state --state NEW -m recent --set --name portscan
+
+iptables -A INPUT -p tcp --dport 1:100 -m state --state NEW -m recent --update --seconds 10 --hitcount 25 --name portscan -j PORTSCAN
+
+#Log and block port-scanning IPs
+iptables -A PORTSCAN -m recent --set --name blacklist
+iptables -I PORTSCAN 1 -j LOG --log-prefix "PORT SCAN DETECTED: " --log-level 4 --log-tcp-options --log-ip-options
+#iptables -A PORTSCAN -j DROP
+
+#Block all further traffic from blacklisted IPs
+#iptables -A INPUT -m recent --name blacklist --rcheck -j DROP
+#iptables -A OUTPUT -m recent --name blacklist --rcheck -j DROP
+```
+
+policeboo ping
+![alt text](images/image-44.png)
+
+policeboo curl
+![alt text](images/image-45.png)
+
+jane ping dan curl sebelum nmap
+![alt text](images/image-46.png)
+
+kemudian, kita policeboo Nmap ke HIA
+```
+nmap -p 1-100 192.244.0.10
+```
+![alt text](images/image-47.png)
+
+setelah itu kita coba ping dan curl policeboo
+**tidak bisa*
+![alt text](images/image-48.png)
+![alt text](images/image-49.png)
+
+sedangkan, Jane tetap bisa ping dan curl karena dia tidak menyerang
+
+## Misi 2 No 7
+> Akses Hollow hanya boleh berasal dari 2 koneksi aktif dari 2 IP yang berbeda dalam waktu bersamaan. Burnice, Caesar, Jane, dan Policeboo diminta melakukan uji coba menggunakan curl.
+
+jalankan `bash setup.sh` <br>
+kemudian, iptables di Hollow Zero
+```
+iptables -A INPUT -p tcp --dport http -m conntrack --ctstate NEW -m recent --set
+
+iptables -A INPUT -p tcp --dport http -m conntrack --ctstate NEW -m recent --update --seconds 1 --hitcount 3 -j REJECT
+
+iptables -A INPUT -p tcp --dport http -j ACCEPT
+```
+
+### Testing
+sebelumnya pastikan sudah menginstal paralel di tempat kita mau command
+```
+apt-get update
+apt-get install parallel -y
+```
+
+kemudian, testing di client antara Caesar, Burnice, Jane atau Policeboo. disini saya saya testing di Jane
+```
+parallel curl -s http://IP-HollowZero ::: IP-Caesar IP-Burnice IP-Jane IP-Policeboo
+```
+![alt text](images/image-58.png)
+
+### Misi 2 No 8
+> setiap paket yang dikirim Fairy ke Burnnice ternyata dialihkan ke HollowZero. Gunakan nc untuk memastikan alur pengalihan ini
+
+jalankan command di Burnice
+```
+iptables -t nat -A PREROUTING -p tcp --dport 3030 -j DNAT --to-destination 192.244.2.130
+
+iptables -t nat -A POSTROUTING -p tcp --dport 3030 -j MASQUERADE
+```
+![alt text](images/image-51.png)
+
+### Testing
+command di Hollow Zero
+*jangan lupa install netcat dulu `apt-get update` dan `apt-get install netcat`*
+```
+nc -l -p 3030
+```
+![alt text](images/image-52.png)
+
+
+dari fairy netcat ke burnice
+```
+echo "burnice apa holow" | nc [IP burnice] 3030
+```
+![alt text](images/image-53.png)
+
+kemudian ke Hollow lagi untuk liat hasilnya
+![alt text](images/image-54.png)
+
+### Misi 3
+> memblokir semua transmisi masuk maupun keluar dari Burnice bisa memanipulasi policy iptables. Sebelum Burnice sepenuhnya terisolasi, Fairy mengirimkan pesan moral: “Kepercayaan adalah dasar dari jaringan yang aman. Jangan pernah mengkhianatinya.
+
+di burnice
+
+```
+apt-get update
+
+apt install netcat -y
+
+nc -l -p 3030
+```
+
+di fairy kirim pesan
+```
+echo "Kepercayaan adalah dasar dari jaringan yang aman. Jangan pernah mengkhianatinya" | nc [ip burnice] 3030
+```
+
+kembali ke burnice untuk melihat hasilnya
+
+![alt text](images/image-55.png)
+
+kemudian, jalankan command berikut di burnice
+```
+iptables -P INPUT DROP
+iptables -P OUTPUT DROP
+iptables -P FORWARD DROP
+```
+
+perangkat lain tdak bisa ping burnis
+
+![alt text](images/image-56.png)
+
+burnis tidak bisa ping keluar
+
+![alt text](images/image-57.png)
+
+
 
 
 ## Settingan Config
