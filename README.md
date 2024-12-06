@@ -10,7 +10,6 @@
 Kelompok kami memiliki prefix IP `192.244`
 
 <details>
-
 <summary>Dokumentasi</summary>
 
 ## Dokumentasi Testing
@@ -23,7 +22,6 @@ Kelompok kami memiliki prefix IP `192.244`
 <img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/8d00b3fc-4d62-4a77-bc28-36750bf826d7">
 <img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/cb1bfa64-2553-4406-be5d-0f478825044a">
 <img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/3b449f47-5e10-4092-b53c-ac39ccc951ae">
-
 <img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/24b067f9-0385-48ed-a092-8b9ab6b6259c">
 <img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/d1f3a853-9676-466d-aba8-13ad84c1387d">
 <img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/c3b1c063-a00d-4211-9cc9-d329366250eb">
@@ -35,7 +33,6 @@ Kelompok kami memiliki prefix IP `192.244`
 <img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/6f163bfc-bc9d-466d-b97e-ab72c64ea12e">
 <img width="1500" alt="dokumentasi" src="https://github.com/user-attachments/assets/958dfea4-3623-4457-8f16-06bfcad6968b">
 
-
 </details>
 
 # Spreadsheet
@@ -43,33 +40,35 @@ https://docs.google.com/spreadsheets/d/1MhaMOiWueZfxZUgOedcuPsIKiQ-S026za_WP8uIF
 
 # GNS-VLSM
 <details>
-
 <summary>Gambar Topologi GNS-VLSM</summary>
-
 ## VLSM Topologi @ GNS3 
 <img width="1500" alt="topo-gns" src="https://github.com/user-attachments/assets/3dec0577-b9c7-4ced-a20e-5dc52cfe475e">
-
 </details>
 
 # Subneting
 <details>
-
 <summary>Subneting</summary>
-
 ## VLSM Topologi @ GNS3 
 <img width="1500" alt="topo-gns" src="https://github.com/user-attachments/assets/dccfb792-bbad-43f7-93da-28b869dc8503">
-
 </details>
 
 ## RUTE
+<details>
+<summary>Rute</summary>
 <img width="1500" alt="rute" src="https://github.com/user-attachments/assets/4cb0cad2-7f94-4cc6-877d-a7e112fb80b4">
+</details>
 
 ## PEMBAGIAN IP
+<details>
+<summary>Pembagian IP</summary>
 <img width="1500" alt="pembagian ip" src="https://github.com/user-attachments/assets/12323a71-b037-4c56-b152-bd3033ff4998">
+</details>
 
 ## TREE
+<details>
+<summary>Tree</summary>
 <img width="1500" alt="tree" src="https://github.com/user-attachments/assets/37485d5f-0b1c-4d59-af89-4a4dd693cce4">
-
+</details>
 
 ## Konfigurasi Network
 ### NewEridu
